@@ -1,4 +1,6 @@
 Taller 01: 
+Miguel Espinoza 
+Silvio Vera
 ==========
 Contar en forma paralela/concurrente las apariciones de un caracter en un arreglo, utilizando threads en C++14
 
