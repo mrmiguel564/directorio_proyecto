@@ -4,11 +4,11 @@
 uint8_t  g_letraObjetivo;
 std::vector<uint8_t> v;
 
-/* Completar funcion
+
 void contarParcial() {
     
 }
-*/
+
 
 int main(int argc, char** argv){
 	
@@ -62,7 +62,10 @@ int main(int argc, char** argv){
 	//======THREADS======
 	start = std::chrono::high_resolution_clock::now();
 	//(1) Separación del trabajo
-	
+	std::thread t1()
+	std::thread t2()
+	std::thread t3()
+	std::thread t4()
 	// Completar
 	
 	//(2) Reducción (Consolidación de resultados parciales)
