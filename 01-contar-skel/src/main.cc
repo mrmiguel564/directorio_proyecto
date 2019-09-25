@@ -5,14 +5,16 @@ uint8_t  g_letraObjetivo;
 std::vector<uint8_t> v;
 
 
-void contarParcial(auto v, auto inicio, auto final, auto g_letraObjetivo) {
-    	for(auto& tmpLetra : v){
-		if(tmpLetra == g_letraObjetivo){
+void contarParcial(auto inicio, auto final, auto g_letraObjetivo) {
+    	for(auto i= inicio; i<final;i++){
+			if(V[i] == g_letraObjetivo){
 			contarTotal++;
-		}
-	}
 
+    	}
+
+	}
 }
+
 
 
 int main(int argc, char** argv){
@@ -68,16 +70,12 @@ int main(int argc, char** argv){
 	start = std::chrono::high_resolution_clock::now();
 	//(1) Separación del trabajo
 	// totalElementos 		numThreads   		 g_letraObjetivo
-	auto di=totalElementos/numThreads; // 100 2    50    50 100 
+	auto di=totalElementos/numThreads;
+	for (int i = 0; i < numThreads; ++i){
+		std::thread t1(contarParcial, di*(i-1) , (di*i)-1, g_letraObjetivo);	
+	}
+	
 
-	std::thread t1(contarParcial,v , inicio , final, g_letraObjetivo);
-	std::thread t2(contarParcial,v , inicio , final, g_letraObjetivo);
-	std::thread t3(contarParcial,v , inicio , final, g_letraObjetivo);
-	std::thread t4(contarParcial,v , inicio , final, g_letraObjetivo);
-	t1.join();
-	t2.join();
-	t3.join();
-	t4.join();
 	// Completar
 	
 	//(2) Reducción (Consolidación de resultados parciales)
