@@ -35,7 +35,7 @@ int main(int argc, char** argv){
 	std::uniform_int_distribution<uint8_t> nRandom('a', 'z');
 	for(size_t i=0; i < totalElementos; i++){
 		uint8_t tmpLetra = nRandom(rng);
-		v.push_back( tmpLetra );
+		v.push_back( tmpLetra ); 
 		//std::cout << tmpLetra << std::endl;
 	}
 	std::cout << "... OK" << std::endl;
@@ -62,10 +62,7 @@ int main(int argc, char** argv){
 	//======THREADS======
 	start = std::chrono::high_resolution_clock::now();
 	//(1) Separación del trabajo
-	std::thread t1()
-	std::thread t2()
-	std::thread t3()
-	std::thread t4()
+
 	// Completar
 	
 	//(2) Reducción (Consolidación de resultados parciales)
