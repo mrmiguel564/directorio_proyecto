@@ -4,8 +4,8 @@
 uint8_t  g_letraObjetivo;
 std::vector<uint8_t> v;
 
-
-void contarParcial(auto inicio, auto final, auto g_letraObjetivo) {
+uint32_t contarTotal = 0;
+void contarParcial(auto V,auto inicio, auto final, auto g_letraObjetivo) {
     	for(auto i= inicio; i<final;i++){
 			if(V[i] == g_letraObjetivo){
 			contarTotal++;
@@ -71,18 +71,18 @@ int main(int argc, char** argv){
 	//(1) Separación del trabajo
 	// totalElementos 		numThreads   		 g_letraObjetivo
 	auto di=totalElementos/numThreads;
-	for (int i = 0; i < numThreads; ++i){
-		std::thread t1(contarParcial, di*(i-1) , (di*i)-1, g_letraObjetivo);	
-	}
+
+	std::thread t[numThreads] //(contarParcial, di*(i-1) , (di*i)-1, g_letraObjetivo);	
 	
 
-	// Completar
+	for (int i = 0; i < numThreads; ++i){
+		t[i] = std::thread(contarParcial,V ,di*(i-1) , (di*i)-1, g_letraObjetivo);
+	}
 	
-	//(2) Reducción (Consolidación de resultados parciales)
-	
-	// Completar
-	
-	//
+	for (int i = 0; i < numThreads; ++i){
+		t[i].join();
+	}
+
 	end     = std::chrono::high_resolution_clock::now(); 
 	elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
 	auto totalTimeThread = elapsed.count();
