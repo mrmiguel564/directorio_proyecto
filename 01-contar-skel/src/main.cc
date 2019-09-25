@@ -5,13 +5,8 @@ uint8_t  g_letraObjetivo;
 std::vector<uint8_t> v;
 
 
-void contarParcial(auto v, auto inicio, auto final, auto g_letraObjetivo) {
-    	for(auto& tmpLetra : v){
-		if(tmpLetra == g_letraObjetivo){
-			contarTotal++;
-		}
-	}
-
+void contarParcial() {
+    
 }
 
 
@@ -40,7 +35,7 @@ int main(int argc, char** argv){
 	std::uniform_int_distribution<uint8_t> nRandom('a', 'z');
 	for(size_t i=0; i < totalElementos; i++){
 		uint8_t tmpLetra = nRandom(rng);
-		v.push_back( tmpLetra ); 
+		v.push_back( tmpLetra );
 		//std::cout << tmpLetra << std::endl;
 	}
 	std::cout << "... OK" << std::endl;
@@ -67,12 +62,10 @@ int main(int argc, char** argv){
 	//======THREADS======
 	start = std::chrono::high_resolution_clock::now();
 	//(1) Separación del trabajo
-	// totalElementos 		numThreads   		 g_letraObjetivo
-	auto di=totalElementos/numThreads; // 100 2    50    50 100 
-		for(auto i=0;di*i>=totalElementos;i++){
-			std::thread t1(contarParcial,v , di*i , di*(i+1)-1, g_letraObjetivo);
-		}
-	t1.join();
+	std::thread t1()
+	std::thread t2()
+	std::thread t3()
+	std::thread t4()
 	// Completar
 	
 	//(2) Reducción (Consolidación de resultados parciales)
