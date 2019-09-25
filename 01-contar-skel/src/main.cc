@@ -9,9 +9,7 @@ void contarParcial(auto V,auto inicio, auto final, auto g_letraObjetivo) {
     	for(auto i= inicio; i<final;i++){
 			if(V[i] == g_letraObjetivo){
 			contarTotal++;
-
     	}
-
 	}
 }
 
